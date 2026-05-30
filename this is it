@@ -1,0 +1,23 @@
+import time
+import os
+
+def generate_max_characters():
+    # Attempting to allocate memory in a massive block
+    # 1GB allocation for speed (adjust based on your system RAM)
+    target_size = 1024 * 1024 * 1024 
+    
+    start_time = time.perf_counter()
+    
+    # Utilizing the C-optimized memory block allocation
+    # This bypasses the Python loop and locks the system equilibrium
+    data = b'A' * target_size 
+    
+    end_time = time.perf_counter()
+    
+    duration = end_time - start_time
+    print(f"Generated {len(data)} characters in {duration:.6f} seconds.")
+    print(f"Throughput: {len(data) / duration / 1e6:.2f} MB/s")
+
+if __name__ == "__main__":
+    generate_max_characters()
+
